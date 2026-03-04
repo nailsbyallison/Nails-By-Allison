@@ -7,34 +7,61 @@
 
 body{
 font-family: Arial;
-background:#000;
+margin:0;
+background:black;
 color:white;
 text-align:center;
-margin:0;
 }
 
 header{
-padding:60px;
+padding:60px 20px;
 background:black;
 }
 
 h1{
 color:#ff4fb3;
-font-size:48px;
+font-size:50px;
+}
+
+h2{
+color:#ff4fb3;
 }
 
 button{
 background:#ff4fb3;
 border:none;
-padding:15px 30px;
-font-size:20px;
-color:white;
+padding:16px 30px;
+font-size:18px;
 border-radius:8px;
+color:white;
 cursor:pointer;
+margin-top:20px;
 }
 
 section{
-padding:40px;
+padding:50px 20px;
+}
+
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.gallery img{
+width:250px;
+border-radius:10px;
+}
+
+footer{
+padding:30px;
+background:#111;
+}
+
+a{
+color:#ff4fb3;
+text-decoration:none;
 }
 
 </style>
@@ -49,7 +76,7 @@ padding:40px;
 
 <p>Home Based Nail Salon – Nethercourt, Ramsgate</p>
 
-<button onclick="window.location.href='https://calendar.app.google/GzzezyLAWbqXfiMz6'">
+<button onclick="window.location.href='https://calendar.google.com'">
 Book Appointment
 </button>
 
@@ -68,13 +95,38 @@ Book Appointment
 
 <section>
 
-<h2>Follow</h2>
+<h2>Gallery</h2>
 
-<p>Instagram: Nails_by_allisonh</p>
-<p>Facebook: Nails By Allison</p>
-<p>TikTok: Nailsbyallison12</p>
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1604654894610-df63bc536371">
+<img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc">
+<img src="https://images.unsplash.com/photo-1632345031435-8727f6897d53">
+
+</div>
 
 </section>
+
+<section>
+
+<h2>Follow Nails by Allison</h2>
+
+<p>
+<a href="https://www.facebook.com">Facebook</a> |
+<a href="https://www.instagram.com">Instagram</a> |
+<a href="https://www.tiktok.com">TikTok</a>
+</p>
+
+</section>
+
+<footer>
+
+<p>© Nails by Allison</p>
+
+</footer>
+
+</body>
+</html>
 
 </body>
 </html>
