@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -6,14 +6,10 @@
   <title>Nails by Allison | Nethercourt, Ramsgate</title>
   <meta name="description" content="Home based nail salon in Nethercourt, Ramsgate. Gel Nails, BIAB Builder Gel, Chrome & Cat Eye, Gel-X. Book appointments online." />
 
-  <!-- PWA bits (installable app icon on phone) -->
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#ff4fb3" />
-
   <style>
     :root{
       --bg:#07060a;
-      --card:#0f0e14;
+      --card:rgba(0,0,0,.22);
       --muted:#c9c7d3;
       --pink:#ff4fb3;
       --pink2:#ff77c8;
@@ -34,7 +30,7 @@
       overflow-x:hidden;
     }
 
-    /* “Glitter” sparkle layer (lightweight) */
+    /* subtle glitter specks (lightweight, stable) */
     .sparkles{
       position:fixed; inset:0;
       pointer-events:none;
@@ -78,13 +74,16 @@
     .brand{
       display:flex;
       align-items:center;
-      gap:14px;
+      gap:16px;
       min-width:260px;
     }
+
+    /* 4x bigger logo vs earlier small tile */
     .logo{
-      width:62px; height:62px;
-      border-radius:16px;
-      background:rgba(255,79,179,.10);
+      width:240px;
+      height:240px;
+      border-radius:24px;
+      background:rgba(255,79,179,.08);
       box-shadow:var(--shadow);
       overflow:hidden;
       display:grid;
@@ -92,17 +91,21 @@
       border:1px solid var(--stroke);
     }
     .logo img{
-      width:100%; height:100%;
+      width:100%;
+      height:100%;
       object-fit:contain;
-      padding:10px;
-      background:rgba(0,0,0,.25);
+      padding:14px;
+      background:rgba(0,0,0,.18);
+      display:block;
     }
-    .brand h1{ margin:0; font-size:18px; line-height:1.1; letter-spacing:.2px; }
-    .brand p{ margin:4px 0 0; font-size:13px; color:var(--muted); }
+
+    .brand h1{ margin:0; font-size:22px; line-height:1.1; letter-spacing:.2px; }
+    .brand p{ margin:6px 0 0; font-size:13px; color:var(--muted); }
 
     .cta-row{
       display:flex; gap:10px; flex-wrap:wrap;
       justify-content:flex-end;
+      align-items:center;
     }
 
     .btn{
@@ -110,13 +113,15 @@
       cursor:pointer;
       padding: 12px 16px;
       border-radius: 14px;
-      font-weight: 700;
+      font-weight: 750;
       letter-spacing:.2px;
       display:inline-flex;
       align-items:center;
       gap:10px;
       box-shadow: var(--shadow);
       transition: transform .06s ease, opacity .2s ease;
+      user-select:none;
+      text-decoration:none;
     }
     .btn:active{ transform: translateY(1px); }
     .btn-primary{
@@ -140,10 +145,12 @@
       display:grid;
       grid-template-columns: 1.2fr .8fr;
       gap:18px;
+      margin-top: 10px;
     }
-    @media (max-width: 860px){
+    @media (max-width: 900px){
       .hero{ grid-template-columns: 1fr; }
       .cta-row{ justify-content:flex-start; }
+      .logo{ width:200px; height:200px; }
     }
     .hero h2{
       margin:0;
@@ -164,14 +171,13 @@
     }
 
     .card{
-      background: rgba(0,0,0,.22);
+      background: var(--card);
       border: 1px solid var(--stroke);
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadow);
     }
 
-    /* Sections */
     .section-title{
       margin: 32px 0 14px;
       display:flex;
@@ -191,35 +197,39 @@
     .col-4{ grid-column: span 4; }
     .col-6{ grid-column: span 6; }
     .col-12{ grid-column: span 12; }
-    @media (max-width: 860px){
+    @media (max-width: 900px){
       .col-4,.col-6{ grid-column: span 12; }
     }
 
-    /* Service cards */
     .service h4{ margin:0; font-size:15px; }
     .dur{ margin-top:6px; font-size:13px; opacity:.95; }
     .meta{ margin-top:6px; font-size:13px; color:var(--muted); line-height:1.45; }
 
-    /* Gallery placeholders */
-    .gallery{
+    /* Optional on-site photo grid (stable, your own images) */
+    .photo-grid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:10px;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-top: 14px;
     }
-    @media (max-width: 860px){
-      .gallery{ grid-template-columns: repeat(2, 1fr); }
-    }
-    .ph{
-      height:150px;
-      border-radius:16px;
-      border: 1px dashed rgba(255,255,255,.18);
+    .photo-grid a{
+      display:block;
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.05);
-      display:grid;
-      place-items:center;
-      color:var(--muted);
-      font-size:13px;
-      text-align:center;
-      padding:10px;
+      transition: transform .08s ease, opacity .2s ease;
+    }
+    .photo-grid a:hover{ transform: translateY(-1px); opacity:.95; }
+    .photo-grid img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      display:block;
+    }
+    @media (max-width: 900px){
+      .photo-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .photo-grid img{ height:200px; }
     }
 
     .footer{
@@ -242,6 +252,14 @@
       border-radius:8px;
       border:1px solid rgba(255,255,255,.12);
     }
+
+    /* Make the page embed responsive */
+    .fb-embed-wrap{
+      width:100%;
+      overflow:hidden;
+      border-radius: var(--radius);
+      border:1px solid var(--stroke);
+    }
   </style>
 </head>
 
@@ -249,29 +267,38 @@
   <div class="sparkles"></div>
 
   <div class="wrap">
+    <!-- Top bar -->
     <div class="topbar">
       <div class="brand">
         <div class="logo">
-          <img src="Rose Gold Black Elegant Luxury Circle Beauty Logo_20250608_164322_0000.png" alt="Nails by Allison logo">
+          <!-- Your exact logo filename (spaces safely encoded as %20) -->
+          <img
+            src="Rose%20Gold%20Black%20Elegant%20Luxury%20Circle%20Beauty%20Logo_20250608_164322_0000.png"
+            alt="Nails by Allison logo"
+          />
         </div>
         <div>
           <h1>Nails by Allison</h1>
-          <p>Home based nail salon • Nethercourt, Ramsgate, Kent</p>
+          <p>Home based nail salon • Nethercourt, Ramsgate</p>
         </div>
       </div>
 
       <div class="cta-row">
-        <!-- Replace BOOKING_LINK_HERE with your booking URL -->
-        <a class="btn btn-primary" href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener">Book appointment</a>
+        <!-- Booking link (already inserted) -->
+        <a class="btn btn-primary" href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener">
+          Book appointment
+        </a>
         <a class="btn btn-ghost" href="#services">View services</a>
+        <a class="btn btn-ghost" href="#photos">See photos</a>
       </div>
     </div>
 
+    <!-- Hero -->
     <div class="hero">
       <div>
-        <h2>Beautiful Nails, <span>Done Properly</span>.</h2>
+        <h2>Beautiful nails, <span>done properly</span>.</h2>
         <p class="sub">
-          Gel Nails, Builder Gel (BIAB), Chrome & Cat Eye finishes, and Gel-X extensions — with a clean, professional home studio set-up.
+          Gel Nails, Builder Gel (BIAB), Chrome & Cat Eye finishes, and Gel-X extensions — in a clean, professional home studio set-up.
         </p>
 
         <div class="pillrow">
@@ -283,8 +310,8 @@
 
         <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn btn-primary" href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener">Book now</a>
-          <a class="btn btn-ghost" href="#gallery">See examples</a>
-          <button class="btn btn-ghost" id="installBtn" style="display:none;">Install app</button>
+          <a class="btn btn-ghost" href="#services">Services</a>
+          <a class="btn btn-ghost" href="#facebook">Facebook</a>
         </div>
       </div>
 
@@ -295,8 +322,11 @@
           <div>• If you have product from another salon, mention it when booking (removal time may be needed).</div>
           <div>• BIAB maintenance is typically every 2–3 weeks.</div>
           <div>• Full address details are provided in confirmation.</div>
-     
+        </div>
+      </div>
+    </div>
 
+    <!-- Services -->
     <div class="section-title" id="services">
       <h3>Services</h3>
       <p>Clear options so clients book the right slot</p>
@@ -305,82 +335,120 @@
     <div class="grid">
       <div class="card col-4 service">
         <h4>Gel Polish (Natural Nails)</h4>
-              <div class="meta">Durable gel polish with a glossy finish on natural nails.</div>
+        <div class="dur">60 mins</div>
+        <div class="meta">Durable gel polish with a glossy finish on natural nails.</div>
       </div>
 
       <div class="card col-4 service">
         <h4>Builder Gel (BIAB) Overlay</h4>
-                <div class="meta">Strengthening overlay for structure and durability; can be finished with colour.</div>
+        <div class="dur">75 mins</div>
+        <div class="meta">Strengthening overlay for structure and durability; can be finished with colour.</div>
       </div>
 
       <div class="card col-4 service">
         <h4>BIAB Infill / Maintenance</h4>
-                <div class="meta">Maintenance appointment (typically every 2–3 weeks depending on growth).</div>
+        <div class="dur">60 mins</div>
+        <div class="meta">Maintenance appointment (typically every 2–3 weeks depending on growth).</div>
       </div>
 
       <div class="card col-4 service">
         <h4>Chrome / Cat Eye Finish</h4>
+        <div class="dur">75 mins</div>
         <div class="meta">Specialist finishes over gel polish for reflective or magnetic effects.</div>
       </div>
 
       <div class="card col-4 service">
         <h4>Gel-X Extensions</h4>
+        <div class="dur">90 mins</div>
         <div class="meta">Full coverage soft gel extensions for added length and shape.</div>
       </div>
 
       <div class="card col-4 service">
         <h4>Removal / Nail Repair</h4>
+        <div class="dur">20–30 mins</div>
         <div class="meta">Select the correct option when booking, or message if unsure.</div>
       </div>
     </div>
 
-    <div class="section-title" id="gallery">
-      <h3>Gallery</h3>
-      <p>Replace placeholders with Allison’s photos</p>
+    <!-- Photos -->
+    <div class="section-title" id="photos">
+      <h3>Photos</h3>
+      <p>View the latest work on Facebook photos</p>
     </div>
-
-    <div class="card">
-      <div class="gallery">
-        <div class="ph">Upload photos to the repo (e.g. <code>gallery/1.jpg</code>) and I’ll wire them in.</div>
-        <div class="ph">Tip: Use 1080×1080 or similar for best quality.</div>
-        <div class="ph">Keep file names simple: <code>1.jpg</code>, <code>2.jpg</code>, <code>3.jpg</code>…</div>
-      </div>
-    </div>
-
-<section>
-
-<h2>Follow Nails by Allison</h2>
-
-<p>
-<a href="https://instagram.com/Nails_by_allisonh" target="_blank">
-View latest nail designs on Instagram
-</a>
-</p>
-
-</section>
 
     <div class="grid">
       <div class="card col-6">
-        <h4 style="margin:0 0 8px;">Follow & message</h4>
-        <div class="socials">
-          <a href="https://instagram.com/Nails_by_allisonh" target="_blank" rel="noopener">Instagram: Nails_by_allisonh</a>
-          <a href="https://facebook.com/NailsByAllison" target="_blank" rel="noopener">Facebook: Nails By Allison</a>
-          <a href="https://tiktok.com/@Nailsbyallison12" target="_blank" rel="noopener">TikTok: @Nailsbyallison12</a>
-        </div>
-        <p style="margin:10px 0 0; color:var(--muted); font-size:13px; line-height:1.55;">
-          Want the <strong style="color:#fff;">live Instagram feed</strong> embedded on the site? We can do it, but it usually needs a small third-party widget or a lightweight script.
-          I’ll give you the safest/free option once your booking link is set.
+        <h4 style="margin:0 0 8px;">Facebook Photos</h4>
+        <p style="margin:0 0 12px; color:var(--muted); font-size:13px; line-height:1.55;">
+          Facebook doesn’t reliably embed the Photos tab as a live grid, so this section gives a stable “view photos” path and a clean page embed.
         </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="https://www.facebook.com/profile.php?id=61576831910224&sk=photos" target="_blank" rel="noopener">
+            View Photos
+          </a>
+          <a class="btn btn-ghost" href="https://www.facebook.com/profile.php?id=61576831910224" target="_blank" rel="noopener">
+            Visit Facebook Page
+          </a>
+        </div>
+
+        <!-- OPTIONAL: Your own on-site photo grid (upload images to /gallery) -->
+        <div style="margin-top:16px; color:var(--muted); font-size:13px;">
+          Want photos to show directly on this website? Upload 6 images into a folder named <code>gallery</code> as <code>1.jpg</code> … <code>6.jpg</code>.
+        </div>
+
+        <div class="photo-grid" aria-label="Nails by Allison gallery">
+          <!-- These will work once you upload the images to /gallery -->
+          <a href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener"><img src="gallery/1.jpg" alt="Nails by Allison - set 1"></a>
+          <a href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener"><img src="gallery/2.jpg" alt="Nails by Allison - set 2"></a>
+          <a href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener"><img src="gallery/3.jpg" alt="Nails by Allison - set 3"></a>
+          <a href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener"><img src="gallery/4.jpg" alt="Nails by Allison - set 4"></a>
+          <a href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener"><img src="gallery/5.jpg" alt="Nails by Allison - set 5"></a>
+          <a href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener"><img src="gallery/6.jpg" alt="Nails by Allison - set 6"></a>
+        </div>
       </div>
 
-      <div class="card col-6">
-        <h4 style="margin:0 0 8px;">Booking</h4>
-        <p style="margin:0; color:var(--muted); font-size:13px; line-height:1.55;">
-          Replace <code>BOOKING_LINK_HERE</code> with your appointment booking URL (Google appointment schedule works well).
+      <!-- Official Facebook Page embed (stable) -->
+      <div class="card col-6" id="facebook">
+        <h4 style="margin:0 0 8px;">Facebook</h4>
+        <p style="margin:0 0 12px; color:var(--muted); font-size:13px; line-height:1.55;">
+          This is the official Facebook page embed. If it doesn’t display in some browsers, the “Visit Facebook Page” button above always works.
         </p>
+
+        <div id="fb-root"></div>
+        <div class="fb-embed-wrap">
+          <div class="fb-page"
+               data-href="https://www.facebook.com/profile.php?id=61576831910224"
+               data-tabs="timeline"
+               data-width="500"
+               data-height="520"
+               data-small-header="false"
+               data-adapt-container-width="true"
+               data-hide-cover="false"
+               data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/profile.php?id=61576831910224" class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/profile.php?id=61576831910224">Nails by Allison</a>
+            </blockquote>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- Socials -->
+    <div class="section-title">
+      <h3>Follow & contact</h3>
+      <p>Social links</p>
+    </div>
+
+    <div class="grid">
+      <div class="card col-12">
+        <div class="socials">
+          <a href="https://www.facebook.com/profile.php?id=61576831910224" target="_blank" rel="noopener">Facebook: Nails by Allison</a>
+          <a href="https://tiktok.com/@Nailsbyallison12" target="_blank" rel="noopener">TikTok: @Nailsbyallison12</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
     <div class="footer">
       <div>© <span id="y"></span> Nails by Allison</div>
       <div>Nethercourt, Ramsgate</div>
@@ -388,31 +456,17 @@ View latest nail designs on Instagram
   </div>
 
   <script>
-    // Year
+    // year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // PWA install prompt (works on Android/Chrome)
-    let deferredPrompt;
-    const installBtn = document.getElementById('installBtn');
-
-    window.addEventListener('beforeinstallprompt', (e) => {
-      e.preventDefault();
-      deferredPrompt = e;
-      installBtn.style.display = 'inline-flex';
-    });
-
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      await deferredPrompt.userChoice;
-      deferredPrompt = null;
-      installBtn.style.display = 'none';
-    });
-
-    // Register service worker (for installability + basic offline)
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('./sw.js').catch(()=>{});
-    }
+    // Facebook SDK (official embed)
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v19.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
   </script>
 </body>
 </html>
