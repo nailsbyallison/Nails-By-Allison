@@ -1,152 +1,399 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nails by Allison | Nethercourt, Ramsgate</title>
+  <meta name="description" content="Home based nail salon in Nethercourt, Ramsgate. Gel Nails, BIAB Builder Gel, Chrome & Cat Eye, Gel-X. Book online." />
+  <meta name="theme-color" content="#ff4fb3" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- PWA -->
+  <link rel="manifest" href="/manifest.webmanifest">
 
-<title>Nails by Allison</title>
+  <style>
+    :root{
+      --bg:#07060a;
+      --card:rgba(255,255,255,.06);
+      --stroke:rgba(255,255,255,.14);
+      --muted:rgba(255,255,255,.78);
+      --pink:#ff4fb3;
+      --pink2:#ff77c8;
+      --shadow:0 16px 40px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:#fff;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(255,79,179,.20), transparent 55%),
+        radial-gradient(1000px 500px at 90% 20%, rgba(255,119,200,.16), transparent 60%),
+        radial-gradient(900px 500px at 50% 100%, rgba(180,60,255,.10), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
 
-<link rel="manifest" href="manifest.webmanifest">
+    /* lightweight sparkle */
+    .sparkles{
+      position:fixed; inset:0; pointer-events:none;
+      background:
+        radial-gradient(2px 2px at 12% 22%, rgba(255,255,255,.30) 45%, transparent 55%),
+        radial-gradient(1.5px 1.5px at 32% 72%, rgba(255,255,255,.20) 45%, transparent 55%),
+        radial-gradient(1px 1px at 82% 42%, rgba(255,255,255,.18) 45%, transparent 55%),
+        radial-gradient(2px 2px at 62% 16%, rgba(255,255,255,.14) 45%, transparent 55%),
+        radial-gradient(1px 1px at 46% 46%, rgba(255,255,255,.12) 45%, transparent 55%),
+        radial-gradient(1.5px 1.5px at 76% 86%, rgba(255,255,255,.14) 45%, transparent 55%);
+      opacity:.55;
+      mix-blend-mode:screen;
+      animation: drift 10s ease-in-out infinite alternate;
+      filter: blur(.1px);
+    }
+    @keyframes drift{
+      from{ transform: translate3d(0,0,0) scale(1); }
+      to{ transform: translate3d(8px,-10px,0) scale(1.02); }
+    }
 
-<style>
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-body{
-font-family:Arial,Helvetica,sans-serif;
-margin:0;
-background:#0b0613;
-color:white;
-text-align:center;
-}
+    .wrap{
+      width:min(1080px, 92vw);
+      margin:0 auto;
+      padding:24px 0 56px;
+      position:relative;
+      z-index:1;
+    }
 
-.container{
-max-width:900px;
-margin:auto;
-padding:40px 20px;
-}
+    /* Top */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      padding:10px 0 18px;
+    }
 
-.logo img{
-width:260px;
-border-radius:20px;
-}
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      min-width:280px;
+    }
 
-h1{
-margin-top:10px;
-font-size:28px;
-}
+    /* BIG logo but still responsive */
+    .logo{
+      width:140px;
+      height:140px;
+      border-radius:22px;
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      padding:14px;
+      display:block;
+    }
 
-.subtitle{
-color:#ccc;
-margin-bottom:30px;
-}
+    .brand h1{
+      margin:0;
+      font-size:22px;
+      letter-spacing:.2px;
+      line-height:1.15;
+    }
+    .brand p{
+      margin:6px 0 0;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.4;
+    }
 
-.button{
-display:inline-block;
-padding:14px 22px;
-margin:8px;
-border-radius:10px;
-text-decoration:none;
-font-weight:bold;
-}
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
+    }
 
-.book{
-background:#ff4fb3;
-color:black;
-}
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color:#fff;
+      font-weight:750;
+      letter-spacing:.2px;
+      cursor:pointer;
+      user-select:none;
+      transition: transform .06s ease, opacity .2s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+    .btn-primary{
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      border:none;
+      color:#09060a;
+      box-shadow: var(--shadow);
+    }
 
-.secondary{
-background:#222;
-color:white;
-}
+    /* Hero */
+    .hero{
+      border-radius: var(--radius);
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow: var(--shadow);
+      padding:22px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:14px;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .cta{ justify-content:flex-start; }
+      .logo{ width:120px; height:120px; }
+    }
 
-.services{
-margin-top:40px;
-text-align:left;
-}
+    .hero h2{
+      margin:0;
+      font-size:34px;
+      line-height:1.1;
+      letter-spacing:.2px;
+    }
+    .hero h2 span{ color: var(--pink); }
+    .sub{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.55;
+    }
 
-.service{
-background:#141018;
-padding:18px;
-margin:10px 0;
-border-radius:10px;
-}
+    .pillrow{ margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; }
+    .pill{
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.18);
+      font-size:13px;
+      color:rgba(255,255,255,.88);
+    }
 
-.footer{
-margin-top:40px;
-font-size:14px;
-color:#aaa;
-}
+    .card{
+      border-radius: var(--radius);
+      border:1px solid var(--stroke);
+      background: rgba(0,0,0,.18);
+      padding:16px;
+    }
 
-</style>
+    .section-title{
+      margin: 28px 0 12px;
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .section-title h3{ margin:0; font-size:18px; }
+    .section-title p{ margin:0; font-size:13px; color:var(--muted); }
 
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .col-4{ grid-column: span 4; }
+    .col-12{ grid-column: span 12; }
+    @media (max-width: 900px){
+      .col-4{ grid-column: span 12; }
+    }
+
+    .service h4{ margin:0; font-size:15px; }
+    .meta{ margin-top:6px; font-size:13px; color:var(--muted); line-height:1.45; }
+    .dur{ margin-top:6px; font-size:13px; opacity:.95; }
+
+    .socials{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:10px;
+    }
+    .socials a{ text-decoration:none; }
+    .socials a:hover{ text-decoration:underline; }
+
+    .footer{
+      margin-top:34px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+      font-size:13px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    /* Install button hidden unless available */
+    #installBtn{ display:none; }
+  </style>
 </head>
 
 <body>
+  <div class="sparkles"></div>
 
-<div class="container">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <!-- Your logo file (spaces encoded) -->
+          <img src="Rose%20Gold%20Black%20Elegant%20Luxury%20Circle%20Beauty%20Logo_20250608_164322_0000.png" alt="Nails by Allison logo">
+        </div>
+        <div>
+          <h1>Nails by Allison</h1>
+          <p>Home based nail salon • Nethercourt, Ramsgate</p>
+        </div>
+      </div>
 
-<div class="logo">
-<img src="Rose Gold Black Elegant Luxury Circle Beauty Logo_20250608_164322_0000.png">
-</div>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank" rel="noopener">Book appointment</a>
+        <a class="btn" href="#services">Services</a>
+        <button class="btn" id="installBtn" type="button">Install app</button>
+      </div>
+    </div>
 
-<h1>Nails by Allison</h1>
-<div class="subtitle">Home Nail Salon • Nethercourt • Ramsgate</div>
+    <div class="hero">
+      <div>
+        <h2>Beautiful nails, <span>done properly</span>.</h2>
+        <p class="sub">
+          Gel Nails, Builder Gel (BIAB), Chrome & Cat Eye finishes, and Gel-X extensions — in a clean, professional home studio set-up.
+        </p>
 
-<a class="button book" href="https://calendar.app.google/GzzezyLAWbqXfiMz6" target="_blank">
-Book Appointment
-</a>
+        <div class="pillrow">
+          <div class="pill">Appointments only</div>
+          <div class="pill">Evenings & weekends</div>
+          <div class="pill">Nethercourt, Ramsgate</div>
+          <div class="pill">Book online</div>
+        </div>
 
-<br>
+        <div class="socials" style="margin-top:14px;">
+          <a class="btn" href="https://www.facebook.com/profile.php?id=61576831910224" target="_blank" rel="noopener">Facebook</a>
+          <a class="btn" href="https://www.facebook.com/profile.php?id=61576831910224&sk=photos" target="_blank" rel="noopener">Photos</a>
+          <a class="btn" href="https://tiktok.com/@Nailsbyallison12" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </div>
 
-<a class="button secondary" href="https://www.facebook.com/profile.php?id=61576831910224" target="_blank">
-Facebook
-</a>
+      <div class="card">
+        <h3 style="margin:0 0 10px; font-size:16px;">Before you book</h3>
+        <div style="color:var(--muted); font-size:13px; line-height:1.55;">
+          <div>• Please arrive on time — appointments run back-to-back.</div>
+          <div>• If you have product from another salon, mention it when booking (removal time may be needed).</div>
+          <div>• BIAB maintenance is typically every 2–3 weeks.</div>
+          <div>• Full address details are provided in confirmation.</div>
+        </div>
+      </div>
+    </div>
 
-<a class="button secondary" href="https://www.facebook.com/profile.php?id=61576831910224&sk=photos" target="_blank">
-Photo Gallery
-</a>
+    <div class="section-title" id="services">
+      <h3>Services</h3>
+      <p>Clear options so clients book the right slot</p>
+    </div>
 
-<a class="button secondary" href="https://tiktok.com/@Nailsbyallison12" target="_blank">
-TikTok
-</a>
+    <div class="grid">
+      <div class="card col-4 service">
+        <h4>Gel Polish (Natural Nails)</h4>
+        <div class="dur">60 mins</div>
+        <div class="meta">Durable gel polish with a glossy finish on natural nails.</div>
+      </div>
 
-<div class="services">
+      <div class="card col-4 service">
+        <h4>Builder Gel (BIAB) Overlay</h4>
+        <div class="dur">75 mins</div>
+        <div class="meta">Strengthening overlay for structure and durability; can be finished with colour.</div>
+      </div>
 
-<h2>Services</h2>
+      <div class="card col-4 service">
+        <h4>BIAB Infill / Maintenance</h4>
+        <div class="dur">60 mins</div>
+        <div class="meta">Maintenance appointment (typically every 2–3 weeks depending on growth).</div>
+      </div>
 
-<div class="service">
-<b>Gel Polish</b><br>
+      <div class="card col-4 service">
+        <h4>Chrome / Cat Eye Finish</h4>
+        <div class="dur">75 mins</div>
+        <div class="meta">Specialist finishes over gel polish for reflective or magnetic effects.</div>
+      </div>
 
-</div>
+      <div class="card col-4 service">
+        <h4>Gel-X Extensions</h4>
+        <div class="dur">90 mins</div>
+        <div class="meta">Full coverage soft gel extensions for added length and shape.</div>
+      </div>
 
-<div class="service">
-<b>Builder Gel (BIAB)</b><br>
-Strengthening overlay
-</div>
+      <div class="card col-4 service">
+        <h4>Removal / Nail Repair</h4>
+        <div class="dur">20–30 mins</div>
+        <div class="meta">Add this if needed when booking (message if unsure).</div>
+      </div>
+    </div>
 
-<div class="service">
-<b>Chrome / Cat Eye</b><br>
-Specialist finishes
-</div>
+    <div class="section-title" id="follow">
+      <h3>Follow</h3>
+      <p>Quick links that work on every device</p>
+    </div>
 
-<div class="service">
-<b>Gel-X Extensions</b><br>
-Full coverage soft gel extensions
-</div>
+    <div class="grid">
+      <div class="card col-12">
+        <div class="socials">
+          <a class="btn" href="https://www.facebook.com/profile.php?id=61576831910224" target="_blank" rel="noopener">Facebook: Nails by Allison</a>
+          <a class="btn" href="https://www.facebook.com/profile.php?id=61576831910224&sk=photos" target="_blank" rel="noopener">Facebook Photos</a>
+          <a class="btn" href="https://tiktok.com/@Nailsbyallison12" target="_blank" rel="noopener">TikTok: @Nailsbyallison12</a>
+        </div>
+      </div>
+    </div>
 
-</div>
+    <div class="footer">
+      <div>© <span id="y"></span> Nails by Allison</div>
+      <div>Nethercourt, Ramsgate</div>
+    </div>
+  </div>
 
-<div class="footer">
-Nethercourt, Ramsgate
-</div>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
 
-</div>
+    // PWA install prompt (Android/Chrome)
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('installBtn');
 
-<script>
-if ('serviceWorker' in navigator) {
-navigator.serviceWorker.register('sw.js');
-}
-</script>
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'inline-flex';
+    });
 
+    installBtn.addEventListener('click', async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      installBtn.style.display = 'none';
+    });
+
+    // Service worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
 </body>
 </html>
