@@ -3,34 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Nails by Allison | Nethercourt, Ramsgate, Kent</title>
-  <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Nails by Allison | Nail Salon Ramsgate</title>
-
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "BeautySalon",
- "name": "Nails by Allison",
- "url": "https://nailsbyallison.co.uk",
- "address": {
-   "@type": "PostalAddress",
-   "addressLocality": "Ramsgate",
-   "addressRegion": "Kent",
-   "addressCountry": "UK"
- },
- "sameAs": [
-   "https://www.facebook.com/profile.php?id=61576831910224"
- ]
-}
-</script>
-  <meta name="description" content="Home based nail salon in Nethercourt, Ramsgate. Gel Nails, BIAB Builder Gel, Chrome & Cat Eye, Gel-X. Book online." />
+  <title>Nails by Allison | BIAB, Gel Nails & Gel-X Extensions Ramsgate</title>
+  <meta name="description" content="Home based nail salon in Nethercourt, Ramsgate, Kent offering BIAB, Gel Nails, Chrome, Cat Eye and Gel-X extensions. Book online or message via Facebook, TikTok, phone or WhatsApp." />
   <meta name="theme-color" content="#ff4fb3" />
 
-  <!-- PWA -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NailSalon",
+    "name": "Nails by Allison",
+    "url": "https://nailsbyallison.co.uk",
+    "image": "https://nailsbyallison.co.uk/Rose%20Gold%20Black%20Elegant%20Luxury%20Circle%20Beauty%20Logo_20250608_164322_0000.png",
+    "description": "Professional home based nail salon in Nethercourt, Ramsgate, Kent offering BIAB, Gel Nails, Chrome, Cat Eye and Gel-X extensions.",
+    "telephone": "+447356244587",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Ramsgate",
+      "addressRegion": "Kent",
+      "postalCode": "CT11",
+      "addressCountry": "GB"
+    },
+    "areaServed": [
+      "Ramsgate",
+      "Nethercourt",
+      "Broadstairs",
+      "Margate",
+      "Westgate-on-Sea"
+    ],
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61576831910224",
+      "https://www.tiktok.com/@Nailsbyallison12"
+    ],
+    "serviceOffered": [
+      {
+        "@type": "Service",
+        "name": "Gel Polish"
+      },
+      {
+        "@type": "Service",
+        "name": "Builder Gel BIAB"
+      },
+      {
+        "@type": "Service",
+        "name": "BIAB Infill / Maintenance"
+      },
+      {
+        "@type": "Service",
+        "name": "Chrome / Cat Eye Nails"
+      },
+      {
+        "@type": "Service",
+        "name": "Gel-X Extensions"
+      },
+      {
+        "@type": "Service",
+        "name": "Removal / Nail Repair"
+      }
+    ]
+  }
+  </script>
+
   <link rel="manifest" href="/manifest.webmanifest">
 
   <style>
@@ -48,7 +80,7 @@
     html,body{height:100%}
     body{
       margin:0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:#fff;
       background:
         radial-gradient(1200px 600px at 10% 10%, rgba(255,79,179,.20), transparent 55%),
@@ -58,7 +90,6 @@
       overflow-x:hidden;
     }
 
-    /* lightweight sparkle */
     .sparkles{
       position:fixed; inset:0; pointer-events:none;
       background:
@@ -70,12 +101,12 @@
         radial-gradient(1.5px 1.5px at 76% 86%, rgba(255,255,255,.14) 45%, transparent 55%);
       opacity:.55;
       mix-blend-mode:screen;
-      animation: drift 10s ease-in-out infinite alternate;
-      filter: blur(.1px);
+      animation:drift 10s ease-in-out infinite alternate;
+      filter:blur(.1px);
     }
     @keyframes drift{
-      from{ transform: translate3d(0,0,0) scale(1); }
-      to{ transform: translate3d(8px,-10px,0) scale(1.02); }
+      from{ transform:translate3d(0,0,0) scale(1); }
+      to{ transform:translate3d(8px,-10px,0) scale(1.02); }
     }
 
     a{ color:inherit; text-decoration:none; }
@@ -89,7 +120,6 @@
       z-index:1;
     }
 
-    /* Top */
     .topbar{
       display:flex;
       align-items:center;
@@ -106,18 +136,17 @@
       min-width:280px;
     }
 
-    /* BIG logo but still responsive */
     .logo{
       width:180px;
       height:180px;
       border-radius:22px;
       border:1px solid var(--stroke);
-      background: rgba(0,0,0,.18);
-      box-shadow: var(--shadow);
+      background:rgba(0,0,0,.18);
+      box-shadow:var(--shadow);
       overflow:hidden;
       display:grid;
       place-items:center;
-      flex: 0 0 auto;
+      flex:0 0 auto;
     }
     .logo img{
       width:100%;
@@ -156,35 +185,34 @@
       padding:12px 16px;
       border-radius:14px;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.08);
+      background:rgba(255,255,255,.08);
       color:#fff;
       font-weight:750;
       letter-spacing:.2px;
       cursor:pointer;
       user-select:none;
-      transition: transform .06s ease, opacity .2s ease;
+      transition:transform .06s ease, opacity .2s ease;
     }
-    .btn:active{ transform: translateY(1px); }
+    .btn:active{ transform:translateY(1px); }
     .btn-primary{
-      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      background:linear-gradient(135deg, var(--pink), var(--pink2));
       border:none;
       color:#09060a;
-      box-shadow: var(--shadow);
+      box-shadow:var(--shadow);
     }
 
-    /* Hero */
     .hero{
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       border:1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
-      box-shadow: var(--shadow);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+      box-shadow:var(--shadow);
       padding:22px;
       display:grid;
-      grid-template-columns: 1.15fr .85fr;
+      grid-template-columns:1.15fr .85fr;
       gap:14px;
     }
     @media (max-width: 900px){
-      .hero{ grid-template-columns: 1fr; }
+      .hero{ grid-template-columns:1fr; }
       .cta{ justify-content:flex-start; }
       .logo{ width:120px; height:120px; }
     }
@@ -195,7 +223,7 @@
       line-height:1.1;
       letter-spacing:.2px;
     }
-    .hero h2 span{ color: var(--pink); }
+    .hero h2 span{ color:var(--pink); }
     .sub{
       margin:10px 0 0;
       color:var(--muted);
@@ -203,7 +231,12 @@
       line-height:1.55;
     }
 
-    .pillrow{ margin-top:14px; display:flex; flex-wrap:wrap; gap:10px; }
+    .pillrow{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
     .pill{
       padding:8px 12px;
       border-radius:999px;
@@ -214,14 +247,14 @@
     }
 
     .card{
-      border-radius: var(--radius);
+      border-radius:var(--radius);
       border:1px solid var(--stroke);
-      background: rgba(0,0,0,.18);
+      background:rgba(0,0,0,.18);
       padding:16px;
     }
 
     .section-title{
-      margin: 28px 0 12px;
+      margin:28px 0 12px;
       display:flex;
       align-items:baseline;
       justify-content:space-between;
@@ -233,13 +266,13 @@
 
     .grid{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      grid-template-columns:repeat(12, 1fr);
+      gap:14px;
     }
-    .col-4{ grid-column: span 4; }
-    .col-12{ grid-column: span 12; }
+    .col-4{ grid-column:span 4; }
+    .col-12{ grid-column:span 12; }
     @media (max-width: 900px){
-      .col-4{ grid-column: span 12; }
+      .col-4{ grid-column:span 12; }
     }
 
     .service h4{ margin:0; font-size:15px; }
@@ -268,7 +301,6 @@
       align-items:center;
     }
 
-    /* Install button hidden unless available */
     #installBtn{ display:none; }
   </style>
 </head>
@@ -280,7 +312,6 @@
     <div class="topbar">
       <div class="brand">
         <div class="logo">
-          <!-- Your logo file (spaces encoded) -->
           <img src="Rose%20Gold%20Black%20Elegant%20Luxury%20Circle%20Beauty%20Logo_20250608_164322_0000.png" alt="Nails by Allison logo">
         </div>
         <div>
@@ -298,9 +329,9 @@
 
     <div class="hero">
       <div>
-        <h2>Beautiful Nails, <span>Done Properly!</span>.</h2>
+        <h2>Beautiful Nails, <span>Done Properly!</span></h2>
         <p class="sub">
-          Gel Nails, Builder Gel (BIAB), Chrome & Cat Eye finishes, and Gel-X extensions — in a Welcoming, clean, professional home studio set-up.
+          Gel Nails, Builder Gel (BIAB), Chrome & Cat Eye finishes, and Gel-X extensions — in a welcoming, clean, professional home studio set-up.
         </p>
 
         <div class="pillrow">
@@ -324,7 +355,8 @@
           <div>• If you have product on your nails already, please mention this when booking as additional removal time may be needed.</div>
           <div>• BIAB maintenance is typically every 2–3 weeks.</div>
           <div>• Full address details are provided in confirmation.</div>
-          <div>• 07356 244587 - Text / WhatsApp / Phone
+          <div>• 07356 244587 - Text / WhatsApp / Phone</div>
+        </div>
       </div>
     </div>
 
